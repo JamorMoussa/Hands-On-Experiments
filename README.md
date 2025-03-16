@@ -6,4 +6,4 @@ The **OpenAI Agents SDK** is a library developed by OpenAI that allows you to bu
 
 ### Function Calling: 
 
-- [Function Calling With Qween2.5:1b Instruct](./openai-agents/function_calling_with_qween2_5_1b_instruct.ipynb)
+- [Function Calling With Qween2.5:1b Instruct](./openai-agents/notebooks/function_calling_with_qween2_5_1b_instruct.ipynb)
