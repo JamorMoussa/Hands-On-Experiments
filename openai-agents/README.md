@@ -26,4 +26,4 @@ The Agents SDK is designed around these core primitives:
 
 ## Notebooks  
 
-- [Function Calling with Qwen2.5-1B Instruct](./openai-agents/notebooks/function_calling_with_qween2_5_1b_instruct.ipynb):  Demonstrates how to use function calling with the Qwen2.5-1B Instruct model using Hugging Face API, allowing the LLM to invoke external tools and APIs for structured outputs.  
+- [Function Calling with Qwen2.5-1B Instruct](./notebooks/function_calling_with_qween2_5_1b_instruct.ipynb):  Demonstrates how to use function calling with the Qwen2.5-1B Instruct model using Hugging Face API, allowing the LLM to invoke external tools and APIs for structured outputs.  
