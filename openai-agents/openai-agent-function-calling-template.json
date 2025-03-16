@@ -1,0 +1,67 @@
+{
+    "messages": [
+        {
+            "content": "You are helpful assistant, you provide helping tools.",
+            "role": "system"
+        },
+        {
+            "role": "user",
+            "content": "What's the weather today?"
+        }
+    ],
+    "model": "qwen2.5:1.5b",
+    "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+            "name": "final_output",
+            "strict": true,
+            "schema": {
+                "properties": {
+                    "city": {
+                        "default": "Rabat",
+                        "description": "this field represents the city name.",
+                        "title": "City",
+                        "type": "string"
+                    },
+                    "weather": {
+                        "default": "Sunny",
+                        "description": "this field represents, the weather sunny ...",
+                        "title": "Weather",
+                        "type": "string"
+                    }
+                },
+                "title": "WeatherModel",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "city",
+                    "weather"
+                ]
+            }
+        }
+    },
+    "stream": false,
+    "tools": [
+        {
+            "type": "function",
+            "function": {
+                "name": "get_weather",
+                "description": "Gives the weather of given city as arguments.",
+                "parameters": {
+                    "properties": {
+                        "city": {
+                            "title": "City",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "city"
+                    ],
+                    "title": "get_weather_args",
+                    "type": "object",
+                    "additionalProperties": false
+                }
+            }
+        }
+    ]
+}
