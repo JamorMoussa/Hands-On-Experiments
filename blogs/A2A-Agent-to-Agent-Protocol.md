@@ -1,13 +1,24 @@
 # Agent To Agent Protocol - A2A
 
+
+<style>
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+</style>
+
 # What's A2A 
 
 ***Agent to Agent Protocol - A2A*** is an open protocol, enables **agents** to show each other their capabilities and negotiate how they will interact with the user. 
 
 
 <div>
-<center>
-<img src="../assets/a2a.png" width="70%">
+<img src="../assets/a2a.png" class="center">
 
 </div>
 
