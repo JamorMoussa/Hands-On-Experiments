@@ -19,15 +19,19 @@ load_dotenv()
 async def run(server: MCPServer): 
 
     model = OpenAIChatCompletionsModel(
-    # Using Github Models:
+        # Using Github Models:
     
         # model="gpt-4o-mini",
         # openai_client= AsyncOpenAI(base_url="https://models.inference.ai.azure.com", api_key=os.environ["OPENAI_API_KEY"]),
     
-    # Using Ollama:  
-        model="llama3.2:1b",
-        openai_client= AsyncOpenAI(base_url="http://127.0.0.1:11434/v1", api_key="ollama")
+        # model="grok-2-latest",
+        # openai_client= AsyncOpenAI(base_url="https://api.x.ai/v1", api_key=os.environ["GROK_API"]),
+        
+        # Using Ollama:  
+            model="llama3.2:1b",
+            openai_client= AsyncOpenAI(base_url="http://127.0.0.1:8001/v1", api_key="ollama")   
     )
+    
 
     agent = Agent(
         name="Assistant",
@@ -36,7 +40,7 @@ async def run(server: MCPServer):
         mcp_servers=[server],
     )
 
-    message = "read favorite books file and sort all books alphabetically, then write the result in a new file."
+    message = "give list of available files. give tools that you used to do so"
     print(f"Running: {message}")
     result = await Runner.run(starting_agent=agent, input=message)
     print(result.final_output)
@@ -52,10 +56,21 @@ async def main():
             "args": ["-y", "@modelcontextprotocol/server-filesystem", str(samples_dir.absolute())],
         }
     ) as server:
-        # await run(server)
+        await run(server)
+        # tools = await server.list_tools()
+        # print(tools)
 
-        tools = await server.list_tools()
-        pprint(tools)
+        # res = await server.call_tool(
+        #     "list_directory", {"path": str(samples_dir.absolute())}
+        # )
+
+
+
+        # for c in res.content:
+        #     print(c.text)
+
+
+
 
 
 if __name__ == "__main__":

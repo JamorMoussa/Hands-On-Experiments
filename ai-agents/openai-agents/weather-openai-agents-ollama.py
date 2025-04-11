@@ -12,7 +12,7 @@ os.environ["OPENAI_API_KEY"] = "ollama"
 
 model = OpenAIChatCompletionsModel(
     model= "qwen2.5:1.5b", # "llama3.2:1b",
-    openai_client= AsyncOpenAI(base_url="http://localhost:11434/v1")
+    openai_client= AsyncOpenAI(base_url="http://localhost:11436/v1")
 )
 
 @function_tool
@@ -23,7 +23,7 @@ def get_weather(city: str) -> str:
 # structured output
 class WeatherModel(BaseModel):
     city: str = Field(
-        default= "Rabat", description="this field represents the city name."
+        default= "Rabat", description="this field represents the city name.", 
     )
     weather: str = Field(
         default= "Sunny", description="this field represents, the weather sunny ..." 
@@ -37,7 +37,7 @@ agent = Agent(
 )
 
 response = Runner.run_sync(
-    starting_agent=agent, input="What's the weather today?"
+    starting_agent=agent, input="What's the weather today in Casablanca?"
 )
 
 pprint(response.final_output.model_dump()) # Response: {'city': 'Rabat', 'weather': 'partly cloudy'}
